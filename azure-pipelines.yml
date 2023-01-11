@@ -22,11 +22,12 @@ steps:
     goals: 'package'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '/home/vsts/work/1/s/webapp/target/webapp.war'
-    Contents: '**/.war'
-    TargetFolder: '/home/vsts/work/1/a'
+    SourceFolder: '/home/vsts/work/1/s/'
+    Contents: '**/*.war'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '/home/vsts/work/1/a'
-    ArtifactName: 'hi'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'artifacts'
     publishLocation: 'Container'
+
